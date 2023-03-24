@@ -2,10 +2,10 @@
 <div class="table-wrapper">
     <div class="row">
       <div class="col-sm-6 header-title">
-        <h4><b>Manage Users</b></h4>
+        <h1><strong>Manage Users</strong></h1>
       </div>
       <div class="col-sm-3 form-group">
-        <a href="#" routerLink="/UserDetail" class="btn btn-success">Create New User</a>
+        <a href="#" routerLink="/UserDetail" class="btn btn-info">Create New User</a>
     </div>
       <div class="col-sm-3 form-group">
         <mat-form-field appearance="fill">
@@ -36,8 +36,8 @@
       <td>{{user.country}}</td>  
       <td>{{user.zipCode}}</td>  
       <td>{{user.mobileNo}}</td> 
-      <td><button type="button" routerLink="UserEdit/{{user.userId}}" data-toggle="tooltip" data-placement="top" title="Edit" class="btn text-warning btn-warning">Edit</button></td>  
-      <td><a (click)="openConfirmationDialog(user.userId)" class="btn text-danger btn-danger">Delete</a></td>    
+      <td><button type="button" routerLink="UserEdit/{{user.userId}}" data-toggle="tooltip" data-placement="top" title="Edit User" class="btn text-warning btn-link">Edit</button></td>  
+      <td><a (click)="openConfirmationDialog(user.userId)" data-toggle="tooltip" data-placement="top" title="Delete User" class="btn btn-link text-danger">Delete</a></td>    
     </tr>  
     <tr>
       <td *ngIf="users?.length == 0" colspan="6">No Users Found</td>

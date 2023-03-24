@@ -16,8 +16,7 @@ div {
     color: black !important;
 }
 .btn-danger {
-    background-color: var(--bs-btn-hover-bg) !important;
-    color: black !important;
+    color: var(--bs-btn-hover-bg) !important;
     border-bottom-width: 1px ;
     box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
 }
@@ -25,7 +24,6 @@ tr:nth-child(even) td {
     background-color: whitesmoke !important;
 }
 th {
-    background-color:lightsteelblue !important;
     color: black !important;
     font-size:medium !important;
 } 

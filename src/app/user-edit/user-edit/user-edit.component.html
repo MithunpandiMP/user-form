@@ -2,7 +2,7 @@
     <div class="table-wrapper">
         <div class="row">
           <div class="col-sm-6 header-title">
-            <h4><b>User Details</b></h4>
+            <h1><strong>User Details</strong></h1>
           </div>
         </div>
           <form [formGroup]="userForm" (ngSubmit)='Update()'>
@@ -108,7 +108,7 @@
                 <button type="submit" [disabled]="!userForm.valid" class="btn submit-btn btn-primary">Update</button>
               </div>
               <div  class="col-sm-2">
-                <a href="#" routerLink="/" class="btn btn-success">Back</a>
+                <a href="#" routerLink="/" class="btn btn-info">Back</a>
             </div>
            </div>
           </div>

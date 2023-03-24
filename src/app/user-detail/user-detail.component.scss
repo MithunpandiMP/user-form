@@ -13,9 +13,6 @@ div {
     font-size: large;
     background-color: lightgrey;
   }
-  .header-title{
-    //margin: 1%;
-  }
   .user-table
   {
     text-align: center;
@@ -26,9 +23,3 @@ div {
   .btn:hover{
     color: white !important;
   }
- .table-bordered>:not(caption)>*>* {
-    border-width: 0 0 !important; 
-}
-.table-bordered > :not(caption) > * > * {
-  border-width: 0 0 !important;
-}

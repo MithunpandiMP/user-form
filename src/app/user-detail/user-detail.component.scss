@@ -1,17 +1,14 @@
-// .container {
-//     //margin: 3%;
-// }
-// label {
-//     display: inline-block;
-//     width: 150px;
-//   }
+.container {
+    margin: 3%;
+}
+label {
+    display: inline-block;
+    width: 150px;
+  }
 div {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
-  .submit-btn
-  {
-    width: 35%;
-  }
+ 
   .table-header{
     font-size: large;
     background-color: lightgrey;
@@ -29,4 +26,9 @@ div {
   .btn:hover{
     color: white !important;
   }
- 
+ .table-bordered>:not(caption)>*>* {
+    border-width: 0 0 !important; 
+}
+.table-bordered > :not(caption) > * > * {
+  border-width: 0 0 !important;
+}

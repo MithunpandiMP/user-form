@@ -1,0 +1,21 @@
+<div mat-dialog-content>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.userId" placeholder="Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.address" placeholder="Email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.country" placeholder="Phone">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.zipCode" placeholder="Website">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.mobileNo" placeholder="Website">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Update</button>
+  </div>

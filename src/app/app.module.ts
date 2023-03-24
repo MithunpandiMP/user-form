@@ -15,11 +15,16 @@ import { MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dial
 import { MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
+import { UserListComponent } from './user-list/user-list/user-list.component';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { UserEditComponent } from './user-edit/user-edit/user-edit.component'
 @NgModule({
   declarations: [
     AppComponent,
     UserDetailComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    UserListComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +36,10 @@ import { MatFormFieldModule} from '@angular/material/form-field';
     MatDialogModule,
     MatIconModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule    
   ],
   providers: [ApiServiceService, { provide: HTTP_INTERCEPTORS, useClass: UserHttpInterceptorInterceptor, multi:true }, 
-    { provide: MatDialogRef ,useValue: {}}],
+    { provide: MAT_DIALOG_DATA, useValue: {} },{ provide: MatDialogRef ,useValue: {}}],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialogComponent]
 })

@@ -18,7 +18,11 @@ export class ApiServiceService {
     return this.http.get<User[]>(this.api + 'GetAllUsers');
   }  
 
-  getUserById(formData: any): Observable<User[]>{  
+  getUserById(id: any): Observable<User>{  
+    return this.http.get<User>(this.api + 'GetUserById?id='+id);  
+  }
+
+  getUserByName(formData: any): Observable<User[]>{  
     return this.http.post<User[]>(this.api + 'GetUserByName', formData);  
   }
 

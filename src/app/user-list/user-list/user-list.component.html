@@ -1,0 +1,47 @@
+<div class="container">
+<div class="table-wrapper">
+    <div class="row">
+      <div class="col-sm-6 header-title">
+        <h4><b>Manage Users</b></h4>
+      </div>
+      <div class="col-sm-3 form-group">
+        <a href="#" routerLink="/UserDetail" class="btn btn-success">Create New User</a>
+    </div>
+      <div class="col-sm-3 form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Search</mat-label>
+          <input type="text" autocomplete="off" placeholder="Name, Address, Country" matInput id="txtSearchBox" #searchValue>
+           <mat-icon matSuffix (click)="searchUser(searchValue.value)">search</mat-icon>
+           </mat-form-field>
+    </div>
+    </div>
+  <table class="table user-table table-striped table-hover user-table table-bordered table-content">  
+    <thead>
+    <tr class="table-header center-align">  
+      <th hidden>Id</th>  
+      <th>Name</th>  
+      <th>Address</th>  
+      <th>Country</th>  
+      <th>ZipCode</th>
+      <th>MobileNo</th>    
+      <th>Edit</th>  
+      <th>Delete</th>  
+    </tr>  
+</thead>
+    <tr class="center-align"  *ngFor="let user of users">  
+      <td hidden>{{user.userId}}</td>  
+      <td>{{user.name}}</td>  
+       
+      <td>{{user.address}}</td>  
+      <td>{{user.country}}</td>  
+      <td>{{user.zipCode}}</td>  
+      <td>{{user.mobileNo}}</td> 
+      <td><button type="button" routerLink="UserEdit/{{user.userId}}" data-toggle="tooltip" data-placement="top" title="Edit" class="btn text-warning btn-warning">Edit</button></td>  
+      <td><a (click)="openConfirmationDialog(user.userId)" class="btn text-danger btn-danger">Delete</a></td>    
+    </tr>  
+    <tr>
+      <td *ngIf="users?.length == 0" colspan="6">No Users Found</td>
+    </tr>
+  </table>  
+</div> 
+</div>

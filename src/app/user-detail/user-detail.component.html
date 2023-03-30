@@ -2,10 +2,10 @@
   <div class="table-wrapper">
       <div class="row">
         <div class="col-sm-6 header-title">
-          <h1><strong>User Details</strong></h1>
+          <h1><strong>Create User</strong></h1>
         </div>
       </div>
-        <form [formGroup]="userForm" (ngSubmit)='Submit()'>
+        <form [formGroup]="userForm" (ngSubmit)='Save()'>
           <input type="hidden" formControlName="userId">
             <div class="table-content">
               <div class="form-group p-10 row">

@@ -28,17 +28,9 @@ export class UserEditComponent  implements OnInit {
    
     ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    console.log(this.id)
      this.buildForm();
-     debugger
-     this.service.getUserById(this.id).subscribe((Data: any) => {
-      this.userForm.controls["userId"].setValue(Data.userId);
-    this.userForm.controls["name"].setValue(Data.name);
-    this.userForm.controls["address"].setValue(Data.address);
-    this.userForm.controls["country"].setValue(Data.country);
-    this.userForm.controls["zipCode"].setValue(Data.zipCode);
-    this.userForm.controls["mobileNo"].setValue(Data.mobileNo);
-      this.users = Data;
+     this.service.getUserById(this.id).subscribe((data: any) => {
+      this.userForm.setValue(data);
      })
     }
   
@@ -48,8 +40,8 @@ export class UserEditComponent  implements OnInit {
         name: ['', [Validators.required]],
         address: ['', [Validators.required]],
         country: ['', [Validators.required]],
-        zipCode: ['', [Validators.pattern("^((\\+91-?)|0)?[0-9]{6}$"),, Validators.required]],
-        mobileNo: ['', [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$"), Validators.required]]
+        zipCode: ['', [Validators.pattern("^[0-9]{6}$"),, Validators.required]],
+        mobileNo: ['', [Validators.pattern("^[0-9]{10}$"), Validators.required]]
       });
     }
     
@@ -57,13 +49,11 @@ export class UserEditComponent  implements OnInit {
       if (this.userForm.invalid) {
         return;
       }
-      this.userForm.value.userId = 0;
-      this.service.postUser(this.userForm.value).subscribe((data: any) => {
-        if(data != '')
+      this.service.putUser(this.userForm.value).subscribe((data: any) => {
+        if(data)
         {
-          this.users = [data];
-          this.toastrservice.success('User Details Updated successfully...');
-          this.router.navigateByUrl('/');
+        this.toastrservice.success('User Details updated successfully...');
+        this.router.navigateByUrl('/');
         }
       })
       this.resetFrom();

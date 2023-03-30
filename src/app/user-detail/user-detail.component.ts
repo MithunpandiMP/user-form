@@ -4,7 +4,6 @@ import { ApiServiceService } from '../api/api-service.service';
 import { User } from '../model/user';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-
 @Injectable({ providedIn: 'root' })
 @Component({
   selector: 'app-user-detail',
@@ -38,20 +37,13 @@ export class UserDetailComponent implements OnInit {
     });
   }
   
-  Submit() {
-    if (this.userForm.invalid) {
-      return;
-    }
-      this.Save();
-    this.resetFrom();
-  }
-
   Save() {
-    this.userForm.value.userId = 0;
+    if (this.userForm.invalid) {
+          return;
+        }
     this.service.postUser(this.userForm.value).subscribe((data: any) => {
-      if(data != '')
+      if(data)
       {
-        this.users = [data];
         this.toastrservice.success('User Details saved successfully...');
         this.router.navigateByUrl('/');
       }

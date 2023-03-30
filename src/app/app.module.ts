@@ -17,7 +17,11 @@ import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { UserListComponent } from './user-list/user-list/user-list.component';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { UserEditComponent } from './user-edit/user-edit/user-edit.component'
+import { UserEditComponent } from './user-edit/user-edit/user-edit.component';
+import { MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +40,10 @@ import { UserEditComponent } from './user-edit/user-edit/user-edit.component'
     MatDialogModule,
     MatIconModule,
     MatInputModule,
-    MatFormFieldModule    
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [ApiServiceService, { provide: HTTP_INTERCEPTORS, useClass: UserHttpInterceptorInterceptor, multi:true }, 
     { provide: MAT_DIALOG_DATA, useValue: {} },{ provide: MatDialogRef ,useValue: {}}],

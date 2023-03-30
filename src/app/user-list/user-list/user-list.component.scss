@@ -4,29 +4,16 @@
 div {
         margin-bottom: 2px;
 }
-.table-bordered>:not(caption)>*>* {
-    border-width: 0 0 !important; 
-}
-.table-bordered > :not(caption) > * > * {
-  border-width: 0 0 !important;
-}
-
 .btn-warning {
     background-color: #ffc107 !important;
     color: black !important;
 }
 .btn-danger {
     color: var(--bs-btn-hover-bg) !important;
-    border-bottom-width: 1px ;
-    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
 }
-tr:nth-child(even) td {
-    background-color: whitesmoke !important;
-}
-th {
-    color: black !important;
-    font-size:medium !important;
-} 
-.user-table {
-    text-align: center;
-}
+mat-header-cell, mat-cell {
+    justify-content: center;
+  }
+  mat-header-cell {
+    font-size: medium;
+  }

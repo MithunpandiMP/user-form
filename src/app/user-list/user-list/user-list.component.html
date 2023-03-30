@@ -16,40 +16,40 @@
                 </mat-form-field>
             </div>
         </div>
-        <mat-table #table style="height: 450px; overflow: auto;" [dataSource]="dataSource">
+        <mat-table #table matSort style="height: 450px; overflow: auto;" [dataSource]="dataSource">
             <ng-container matColumnDef="userId">
                 <mat-header-cell hidden *matHeaderCellDef> userId </mat-header-cell>
                 <mat-cell hidden *matCellDef="let element"> {{element.userId}} </mat-cell>
             </ng-container>
-            <ng-container hidden matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef> User Name </mat-header-cell>
+            <ng-container  matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef  mat-sort-header> User Name </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
             </ng-container>
-            <ng-container hidden matColumnDef="address">
-                <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+            <ng-container  matColumnDef="address"> 
+                <mat-header-cell *matHeaderCellDef  mat-sort-header> Address </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
             </ng-container>
-            <ng-container hidden matColumnDef="country">
-                <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
+            <ng-container  matColumnDef="country">
+                <mat-header-cell *matHeaderCellDef  mat-sort-header> Country </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.country}} </mat-cell>
             </ng-container>
-            <ng-container hidden matColumnDef="zipCode">
-                <mat-header-cell *matHeaderCellDef> ZipCode </mat-header-cell>
+            <ng-container  matColumnDef="zipCode">
+                <mat-header-cell *matHeaderCellDef  mat-sort-header> ZipCode </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.zipCode}} </mat-cell>
             </ng-container>
-            <ng-container hidden matColumnDef="mobileNo">
-                <mat-header-cell *matHeaderCellDef> Mobile No </mat-header-cell>
+            <ng-container  matColumnDef="mobileNo">
+                <mat-header-cell *matHeaderCellDef  mat-sort-header> Mobile No </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.mobileNo}} </mat-cell>
             </ng-container>
 
-            <ng-container hidden matColumnDef="edit">
+            <ng-container  matColumnDef="edit">
                 <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
                 <mat-cell *matCellDef="let element">
                     <a routerLink="UserEdit/{{element.userId}}" data-toggle="tooltip" data-placement="top"
                         title="Edit User" class="btn text-warning btn-link">Edit</a>
                 </mat-cell>
             </ng-container>
-            <ng-container hidden matColumnDef="delete">
+            <ng-container  matColumnDef="delete">
                 <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
                 <mat-cell *matCellDef="let element">
                     <a (click)="openConfirmationDialog(element.userId)" data-toggle="tooltip" data-placement="top"

@@ -2,7 +2,7 @@
     <div class="table-wrapper">
         <div class="row">
           <div class="col-sm-6 header-title">
-            <h1><strong>User Details</strong></h1>
+            <h1><strong>Edit User</strong></h1>
           </div>
         </div>
           <form [formGroup]="userForm" (ngSubmit)='Update()'>
@@ -20,6 +20,7 @@
                 autocomplete="off"
                 maxlength="50"
                 formControlName="name"
+                
               />
               <div *ngIf="f['name']?.touched && f['name']?.invalid" class="alert alert-danger">  
                 <div *ngIf="f['name']?.errors?.required">User Name is required.</div>  

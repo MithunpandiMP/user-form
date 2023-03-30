@@ -16,38 +16,28 @@ import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirm
 
 export class UserListComponent implements OnInit {
   dialogRef!: MatDialogRef<ConfirmationDialogComponent>;
-  userForm: FormGroup;  
   data: any = [];
   toaster: any;
   preview: string = '';
-  //EventValue: any = 'Save';
   users!: User[];
-   get f() { return this.userForm.controls; }
-
+  userSearch!: FormGroup; 
+ 
   constructor(private fb: FormBuilder, private service: ApiServiceService, private toastrservice: ToastrService,
      private dialog: MatDialog,  @Inject(MAT_DIALOG_DATA) public datas: User) {
-    this.userForm = fb.group({
-      userId: [0 , [Validators.required]],
-      name: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      country: ['', [Validators.required]],
-      zipCode: ['', [Validators.pattern("^((\\+91-?)|0)?[0-9]{6}$"),, Validators.required]],
-      mobileNo: ['', [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$"), Validators.required]]
-    });
+      this.userSearch = this.fb.group({
+        searchText: ['', Validators.pattern('^[a-zA-Z]+$')]
+      });
   }
+  
   ngOnInit(): void {
     this.getUser();
   }
-  CreateUser(){
-
-  }
+  
   openConfirmationDialog(id: number) {
     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       disableClose: false
     });
-
     this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to delete?"
-
     this.dialogRef.afterClosed().subscribe(result => {
       if(result) {
        this.deleteUser(id);
@@ -61,37 +51,7 @@ export class UserListComponent implements OnInit {
       this.users = data;
     })
   }
-
-  Submit() {
-    if (this.userForm.invalid) {
-      return;
-    }
-    if (this.userForm.value.userId > 0) {
-      this.Update()
-    }
-    
-    this.resetFrom();
-  }
  
-  Update() {
-    this.service.putUser(this.userForm.value).subscribe((data: any) => {
-      if(data != '')
-      {
-        this.users = [data];
-      this.toastrservice.success('User Details updated successfully...');
-      }
-    })
-  }
-
-  EditUser(Data: any) {
-    this.userForm.controls["userId"].setValue(Data.userId);
-    this.userForm.controls["name"].setValue(Data.name);
-    this.userForm.controls["address"].setValue(Data.address);
-    this.userForm.controls["country"].setValue(Data.country);
-    this.userForm.controls["zipCode"].setValue(Data.zipCode);
-    this.userForm.controls["mobileNo"].setValue(Data.mobileNo);
-  }
-
   deleteUser(id: number) {
     this.service.deleteUser(id).subscribe((data: any) => {
       this.getUser();
@@ -99,25 +59,17 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  searchUser(data: any) {
-    if(data == '')
+  searchUser(searchText: any) {
+    if(searchText == '')
      {
        this.getUser();
      }
     else
      {
-      this.userForm.value.name = data;
-      this.userForm.value.zipCode = 0;
-      this.userForm.value.mobileNo = 0;
-      this.userForm.value.country = '';
-      this.userForm.value.address = '';
-      this.service.getUserByName(this.userForm.value).subscribe((data: any) => {
+      this.service.searchUserByText(this.userSearch.value).subscribe((data: any) => {
       this.users = data;
     })
    }
   }
-  resetFrom() {
-    this.getUser();
-    this.userForm.reset();
-  }
+
 }

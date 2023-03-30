@@ -1,6 +1,6 @@
 <div class="container">
 <div class="table-wrapper">
-    <div class="row">
+    <div class="row" [formGroup]="userSearch">
       <div class="col-sm-6 header-title">
         <h1><strong>Manage Users</strong></h1>
       </div>
@@ -10,12 +10,12 @@
       <div class="col-sm-3 form-group">
         <mat-form-field appearance="fill">
           <mat-label>Search</mat-label>
-          <input type="text" autocomplete="off" placeholder="Name, Address, Country" matInput id="txtSearchBox" #searchValue>
+          <input type="text" autocomplete="off" formControlName="searchText" placeholder="Name, Address, Country" matInput id="searchText" #searchValue>
            <mat-icon matSuffix (click)="searchUser(searchValue.value)">search</mat-icon>
            </mat-form-field>
     </div>
     </div>
-  <table class="table user-table table-striped table-hover user-table table-bordered table-content">  
+  <table class="table user-table table-striped table-hover table-bordered table-content">  
     <thead>
     <tr class="table-header center-align">  
       <th hidden>Id</th>  
@@ -28,7 +28,7 @@
       <th>Delete</th>  
     </tr>  
 </thead>
-    <tr class="center-align"  *ngFor="let user of users">  
+    <tr class="table-rows center-align"  *ngFor="let user of users">  
       <td hidden>{{user.userId}}</td>  
       <td>{{user.name}}</td>  
        

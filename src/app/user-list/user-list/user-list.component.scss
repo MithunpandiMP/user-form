@@ -1,19 +1,42 @@
 .container {
-        margin: 5%;
+    margin: 5%;
 }
+
 div {
-        margin-bottom: 2px;
+    margin-bottom: 2px;
 }
+
 .btn-warning {
     background-color: #ffc107 !important;
     color: black !important;
 }
+
 .btn-danger {
     color: var(--bs-btn-hover-bg) !important;
 }
-mat-header-cell, mat-cell {
+
+mat-header-cell,
+mat-cell {
     justify-content: center;
-  }
-  mat-header-cell {
+}
+
+mat-header-cell {
     font-size: medium;
-  }
+}
+
+.norecord {
+    text-align: center;
+    font-size: x-large;
+    background: #fff;
+    height: 50px;
+    padding-top: 1%;
+}
+
+table {
+    width: 100%;
+}
+
+.table-container {
+    overflow: auto;
+    height: 400px;
+}
